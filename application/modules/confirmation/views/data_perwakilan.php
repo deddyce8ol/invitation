@@ -16,6 +16,11 @@
 				<hr>
 				<p><?php echo $keterangan_undangan;?></p>
 				<p>Perwakilan yang dikirim sebanyak : <span class="label label-info"><?php echo $slot;?> Orang</span></p>
+				<hr>
+				<input type="text" name="kontak" id="kontak" value="<?php echo $kontak;?>">
+				<button id="proses_kontak">Proses</button><div class="confirm-kontak"></div>
+				<br>
+				<br>
 				<?php
 					if ($perwakilan_num < $slot) {						
 						echo '<a class="btn btn-primary" data-toggle="modal" href="#modal-perwakilan">'.$btn_label.'</a>';

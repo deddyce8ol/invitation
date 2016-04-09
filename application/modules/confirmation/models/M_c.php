@@ -27,11 +27,16 @@ class M_c extends CI_Model {
     	return $query->num_rows();
     }
     function getPerwakilanByEvent($code){
-    	$this->db->where('code', $code);
-    	return $this->db->get('perwakilan');
+        $this->db->where('code', $code);
+        return $this->db->get('perwakilan');
     }
     function getEventByCode($code){
         $this->db->where('code', $code);
+        return $this->db->get('invitation')->row();   
+    }
+    function cekCodePassword($code, $password){
+        $this->db->where('code', $code);
+        $this->db->where('password', $password);
         return $this->db->get('invitation')->row();   
     }
     function getPerwakilanCodeId($code,$id){
@@ -66,6 +71,15 @@ class M_c extends CI_Model {
         $this->db->delete('perwakilan');
     }	
 
+    function cekLogin()
+    {
+        if ($this->session->userdata('login')) {
+            return FALSE;
+        }
+        else {
+            redirect('confirmation','refresh');
+        }
+    }
 }
 
 /* End of file m_c.php */

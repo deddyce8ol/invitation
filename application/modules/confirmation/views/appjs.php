@@ -64,5 +64,30 @@
 			
 			/* Act on the event */
 		});
+		$("#proses_kontak").click(function(event) {
+			var url_action = base_url + "confirmation/proses_kontak";
+			var code = "<?php echo $this->session->userdata('code');?>";
+			var kontak = $("#kontak").val();
+			$.ajax({
+				url: url_action,
+				type: 'POST',
+				dataType: 'json',
+				data: {kontak: kontak},
+				success: function(response){
+					console.log(response);
+					if (response.status == "success") {
+						$(".confirm-kontak").html('<span class="label label-success">' + response.message + '</span>');
+						$("#kontak").val(kontak);
+					}
+					else {
+						$(".confirm-kontak").html(response.message);
+					}
+				},
+				error: function(response){
+					alert("Gagal proses kontak");
+					console.log(response);
+				}
+			});
+		});
 	});
 </script>

@@ -7,7 +7,7 @@ class Confirmation extends MX_Controller {
 	{
 		parent::__construct();
         $this->load->model('M_c');
-        $this->load->library('indo_date');
+        $this->load->library('indo_date');        
         // $this->output->set_template('adminLTE/default');
     }
     public function index()
@@ -18,21 +18,26 @@ class Confirmation extends MX_Controller {
     public function cek_code()
     {
        $code = $this->input->post('code'); 
-       $inv = $this->M_c->getEventByCode($code);
+       $password = $this->input->post('password');
+       $inv = $this->M_c->cekCodePassword($code, $password);
        if ($inv) {
-            redirect('confirmation/invitation/'.$code);
+            $data['code'] = $inv->code;
+            $data['login'] = TRUE;
+            $this->session->set_userdata( $data );
+            redirect('confirmation/invitation','refresh');
        }
        else {
             $this->session->set_flashdata('message', '<div class="alert alert-danger">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                <strong>Terjadi Kesalahan</strong> Kode Undangan Tidak Terdaftar
+                <strong>Terjadi Kesalahan</strong> Kode Undangan Salah atau Password Salah
             </div>');
-            redirect("confirmation");
-       }
+            redirect("confirmation");        
+       } 
     }
-    public function invitation($code)
+    public function invitation()
     {
-    	// $code = $this->input->post('code');
+        $this->M_c->cekLogin();
+        $code = $this->session->userdata('code');
     	$inv = $this->M_c->getEventByCode($code);
     	if ($inv) {
     		$data['subject'] = $inv->subject;
@@ -82,10 +87,12 @@ class Confirmation extends MX_Controller {
                 $data['tw'] = $this->input->post('tw');
         		$data['ig'] = $this->input->post('ig');
                 if ($mode == "add") {
+                    $data['date_create'] = date("Y-m-d H:i:s");
                     $this->M_c->insert($data);
                 }
                 elseif ($mode == "edit") {
                     $this->M_c->update($id, $data);
+                    $data['date_update'] = date("Y-m-d H:i:s");
                 }
                 $response['status'] = "success";
                 $response['message'] = "Data ".$data['name']." Berhasil di Proses";
@@ -96,6 +103,24 @@ class Confirmation extends MX_Controller {
     	else {
     		redirect("confirmation");
     	}
+    }
+    public function proses_kontak()
+    {
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('kontak', 'kontak', 'trim|required');
+        if ($this->form_validation->run() == FALSE) {
+            $response['status'] = "error";
+            $response['message'] = validation_errors();
+        }
+        else {
+            $code = $this->session->userdata('code');    
+            $kontak = $this->input->post('kontak');
+            $this->db->where('code', $code);
+            $this->db->update('invitation', array("kontak"=>$kontak));
+            $response['status'] = "success";
+            $response['message'] = "Kontak berhasil di update";
+        }
+        echo json_encode($response);
     }
     public function edit_perwakilan($code, $id)
     {

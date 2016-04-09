@@ -18,11 +18,24 @@
 				  	<label class="col-md-4 control-label" for="code">Kode Undangan</label>  
 					<div class="col-md-3">
 						  <input id="code" name="code" type="text" placeholder="Kode Undangan" class="form-control" required="">
-						  <span class="help-block">Ketikan Kode Undangan</span>  
-						<button type="submit" class="btn btn-primary">Proses</button>
+						  <span class="help-block">Ketikan Kode Undangan</span>  						
 					</div>
 					<div class="col-sm-2 col-sm-offset-2">
 					</div>
+				</div>
+				<!-- Text input-->
+				<div class="form-group">
+				  <label class="col-md-4 control-label" for="password">Sandi</label>  
+				  <div class="col-md-4">
+				  <input id="password" name="password" type="password" placeholder="Sandi" class="form-control input-md" required="">
+				  <span class="help-block">Sandi</span>  
+				  </div>
+				</div>
+				<div class="form-group">
+				  <label class="col-md-4 control-label" for="name"></label>  
+				  <div class="col-md-4">
+				  	<button type="submit" class="btn btn-primary">Proses</button>
+				  </div>
 				</div>
 			<?php echo form_close();?>
 			
