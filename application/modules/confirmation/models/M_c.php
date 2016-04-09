@@ -73,7 +73,7 @@ class M_c extends CI_Model {
 
     function cekLogin()
     {
-        if ($this->session->userdata('login')) {
+        if ($this->session->userdata('login_event')) {
             return FALSE;
         }
         else {

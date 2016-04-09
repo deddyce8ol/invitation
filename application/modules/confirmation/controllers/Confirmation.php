@@ -22,7 +22,7 @@ class Confirmation extends MX_Controller {
        $inv = $this->M_c->cekCodePassword($code, $password);
        if ($inv) {
             $data['code'] = $inv->code;
-            $data['login'] = TRUE;
+            $data['login_event'] = TRUE;
             $this->session->set_userdata( $data );
             redirect('confirmation/invitation','refresh');
        }
