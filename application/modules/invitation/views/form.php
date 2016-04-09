@@ -14,6 +14,10 @@
                                     <td><input type="text" class="form-control" name="code" id="code" placeholder="Kode Undangan" value="<?php echo $code; ?>" /></td>
                                 </tr>
                                 <tr>
+                                    <td width="200">Sandi <?php echo form_error('password') ?></td>
+                                    <td><input type="text" class="form-control" name="password" id="password" placeholder="Sandi" value="<?php echo $password; ?>" /></td>
+                                </tr>
+                                <tr>
                                     <td width="200">Kuota <?php echo form_error('slot') ?></td>
                                     <td><input type="number" class="form-control" name="slot" id="slot" placeholder="Kuota Perwakilan" value="<?php echo $slot; ?>" /></td>
                                 </tr>

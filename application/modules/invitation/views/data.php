@@ -15,6 +15,7 @@
 							<tr>
 								<th width="20">No</th>
 								<th>Kode Undangan</th>
+								<th>Sandi</th>
 								<th>Kuota</th>
 								<th>Kepada</th>
 								<th>Kontak</th>
@@ -35,6 +36,7 @@
 									echo "<tr>";
 									echo "<td>".$no."</td>";
 									echo "<td>".$r->code."</td>";
+									echo "<td>".$r->password."</td>";
 									echo "<td>".$r->slot."</td>";
 									echo "<td>".$r->subject."</td>";
 									echo "<td>".$r->kontak."</td>";

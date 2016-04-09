@@ -48,6 +48,7 @@ class Invitation extends MX_Controller {
             'action' => site_url('invitation/add_proses'),
             'code_old' => set_value('code_old'),
             'code' => set_value('code'),
+            'password' => set_value('password'),
             'slot' => set_value('slot'),
             'kontak' => set_value('kontak'),
             'subject' => set_value('subject')
@@ -66,6 +67,7 @@ class Invitation extends MX_Controller {
             $publish_date = ($this->input->post('status') == 1) ? date("Y-m-d H:i:s") : null ;
             $data = array(
                 'code' => $this->input->post('code',TRUE),
+                'password' => $this->input->post('password',TRUE),
                 'slot' => $this->input->post('slot',TRUE),
                 'subject' => $this->input->post('subject',TRUE),
                 'kontak' => $this->input->post('kontak',TRUE),
@@ -90,6 +92,7 @@ class Invitation extends MX_Controller {
                 'action' => site_url('invitation/edit_proses'),
         		'code_old' => set_value('code_old', $row->code),
                 'code' => set_value('code', $row->code),
+                'password' => set_value('password', $row->password),
                 'slot' => set_value('slot', $row->slot),
         		'kontak' => set_value('kontak', $row->kontak),
         		'subject' => set_value('subject', $row->subject)
@@ -113,6 +116,7 @@ class Invitation extends MX_Controller {
         } else {
             $data = array(
                 'code' => $this->input->post('code',TRUE),
+                'password' => $this->input->post('password',TRUE),
                 'slot' => $this->input->post('slot',TRUE),
         		'kontak' => $this->input->post('kontak',TRUE),
         		'subject' => $this->input->post('subject',TRUE),
@@ -144,6 +148,7 @@ class Invitation extends MX_Controller {
     private function _rules() 
     {
         $this->form_validation->set_rules('code', 'code', 'trim|required');
+        $this->form_validation->set_rules('password', 'password', 'required');
         $this->form_validation->set_rules('slot', 'slot', 'trim|required');
         $this->form_validation->set_rules('subject', 'subject', 'trim|required');
     	$this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
