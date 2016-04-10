@@ -17,6 +17,9 @@
 								<th>Email</th>
 								<th>Nama</th>
 								<th>Telp</th>
+								<th>Facebook</th>
+								<th>Twitter</th>
+								<th>Instagram</th>
 								<th></th>
 							</tr>
 						</thead>
@@ -34,6 +37,9 @@
 									echo "<td>".$r->email."</td>";
 									echo "<td>".$r->name."</td>";
 									echo "<td>".$r->telp."</td>";
+									echo "<td>".$r->fb."</td>";
+									echo "<td>".$r->tw."</td>";
+									echo "<td>".$r->ig."</td>";
 									echo "<td>".$aksi."</td>";									
 									echo "</tr>";
 								}

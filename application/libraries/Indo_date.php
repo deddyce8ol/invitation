@@ -14,7 +14,7 @@ class Indo_date {
 	}
 
 	function tgl_indo($tgl){
-		if ($tgl == "0000-00-00 00:00:00" OR $tgl_indo == "0000-00-00") {
+		if ($tgl == "0000-00-00 00:00:00" OR $tgl == "0000-00-00") {
 			return "-";
 		}
 		else {

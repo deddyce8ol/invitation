@@ -23,6 +23,18 @@
                                     <td><input type="telp" class="form-control" name="telp" id="telp" placeholder="Telp" value="<?php echo $telp;?>"/></td>
                                 </tr>
                                 <tr>
+                                    <td>Facebook</td>
+                                    <td><input type="fb" class="form-control" name="fb" id="fb" placeholder="Facebook ID" value="<?php echo $fb;?>"/></td>
+                                </tr>
+                                <tr>
+                                    <td>Twitter</td>
+                                    <td><input type="tw" class="form-control" name="tw" id="tw" placeholder="Twitter" value="<?php echo $tw;?>"/></td>
+                                </tr>
+                                <tr>
+                                    <td>Instagram</td>
+                                    <td><input type="ig" class="form-control" name="ig" id="ig" placeholder="Instagram" value="<?php echo $ig;?>"/></td>
+                                </tr>
+                                <tr>
                                     <td colspan='2'>
                                         <button type="submit" class="btn btn-primary">Proses</button>
                                         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>

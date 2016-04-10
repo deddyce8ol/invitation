@@ -18,7 +18,7 @@
 								<th>Sandi</th>
 								<th>Kuota</th>
 								<th>Kepada</th>
-								<th>Kontak</th>
+								<th>Kontak</th>								
 								<th>Tanggal Konfirmasi</th>
 								<th></th>
 							</tr>
@@ -39,7 +39,7 @@
 									echo "<td>".$r->password."</td>";
 									echo "<td>".$r->slot."</td>";
 									echo "<td>".$r->subject."</td>";
-									echo "<td>".$r->kontak."</td>";
+									echo "<td>".$r->kontak."</td>";									
 									echo "<td>".$this->indo_date->tgl_indo($r->date_confirm)."</td>";
 									echo "<td>".$aksi."</td>";									
 									echo "</tr>";

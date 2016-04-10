@@ -3,11 +3,11 @@
 <html><head>
     <meta charset="utf-8">
     <title>PDS <?php echo $title; ?></title>
-    <meta property="og:url"                content="http://www.nytimes.com/2015/02/19/arts/international/when-great-minds-dont-think-alike.html" />
+    <meta property="og:url"                content="http://event.pontianakdigitalstream.com" />
     <meta property="og:type"               content="website" />
     <meta property="og:title"              content="Launching Pontianak Digital Stream" />
     <meta property="og:description"        content="Kami akan menyelenggarakan acara peresmian Pontianak Digital Stream (PDS), yaitu sebuah wadah dan gerakan yang diusung para penggiat teknologi lokal yang bertujuan untuk mewujudkan ekosistem pada bidang teknologi informasi di Pontianak." />
-    <meta property="og:image"              content="<?php echo $assets;?>img/pontianak-digital-stream-com.jpg" />
+    <meta property="og:image"              content="<?php echo $assets;?>images/pontianak-digital-stream-com.jpg" />
     <!--pageMeta-->
     <!-- Loading Bootstrap -->
     <link href="<?php echo $assets;?>css/bootstrap.css" rel="stylesheet">

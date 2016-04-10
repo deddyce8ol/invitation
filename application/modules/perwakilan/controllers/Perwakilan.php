@@ -34,6 +34,9 @@ class Perwakilan extends MX_Controller {
 			$data['email_old'] = set_value("email_old");
 			$data['name'] = set_value("name");
 			$data['telp'] = set_value("telp");
+			$data['fb'] = set_value("fb");
+			$data['tw'] = set_value("tw");
+			$data['ig'] = set_value("ig");
 			$query2 = $this->M_p->get_by_inv($code)->result();
 			$data['result'] = $query2;
 			$this->output->append_title($inv->subject);
@@ -59,6 +62,9 @@ class Perwakilan extends MX_Controller {
                 'email' => $this->input->post('email',TRUE),
                 'name' => $this->input->post('name',TRUE),
                 'telp' => $this->input->post('telp',TRUE),
+                'fb' => $this->input->post('fb',TRUE),
+                'tw' => $this->input->post('tw',TRUE),
+                'ig' => $this->input->post('ig',TRUE),
                 'date_create' => date("Y-m-d H:i:s")
             );
             $this->M_p->insert($data);
@@ -79,6 +85,9 @@ class Perwakilan extends MX_Controller {
 			$data['email'] = $r->email;
 			$data['name'] = $r->name;
 			$data['telp'] = $r->telp;
+			$data['fb'] = $r->fb;
+			$data['tw'] = $r->tw;
+			$data['ig'] = $r->ig;
 			$this->load->view('form', $data);
 		}
 		else {
@@ -102,6 +111,9 @@ class Perwakilan extends MX_Controller {
                 'email' => $this->input->post('email',TRUE),
                 'name' => $this->input->post('name',TRUE),
                 'telp' => $this->input->post('telp',TRUE),
+                'fb' => $this->input->post('fb',TRUE),
+                'tw' => $this->input->post('tw',TRUE),
+                'ig' => $this->input->post('ig',TRUE),
                 'date_update' => date("Y-m-d H:i:s")
             );
             $this->M_p->update($id, $data);
