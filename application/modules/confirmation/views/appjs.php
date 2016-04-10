@@ -3,6 +3,7 @@
 	$(document).ready(function() {
 		$('#modal-perwakilan').on('show.bs.modal', function (e) {
 			$("#form_perwakilan")[0].reset();
+			$(".error-container").html("");
 			$("#modal-perwakilan .modal-title").html("Form Perwakilan");
 			var inv_code = "<?php echo $code;?>";
 			$("#modal-perwakilan #code").val(inv_code);	
@@ -21,11 +22,12 @@
 						location.reload();
 					}
 					else {
-						alert(response.message);
+						$(".error-container").html(response.message);
 					}
 				},
 				error: function(response){
-					alert("Data Gagal di Proses");
+					$(".error-container").html(response.message);
+					// alert("Data Gagal di Proses");
 					// console.log("error");
 					console.log(response);
 				}

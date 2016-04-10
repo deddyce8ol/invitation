@@ -8,7 +8,7 @@ class Confirmation extends MX_Controller {
 		parent::__construct();
         $this->load->model('M_c');
         $this->load->library('indo_date');        
-        // $this->output->set_template('adminLTE/default');
+        $this->output->set_template('select/default');
     }
     public function index()
     {
@@ -22,6 +22,7 @@ class Confirmation extends MX_Controller {
        $inv = $this->M_c->cekCodePassword($code, $password);
        if ($inv) {
             $data['code'] = $inv->code;
+            $data['subject'] = $inv->subject;
             $data['login_event'] = TRUE;
             $this->session->set_userdata( $data );
             redirect('confirmation/invitation','refresh');
@@ -68,6 +69,8 @@ class Confirmation extends MX_Controller {
     }
     public function proses()
     {
+        $this->M_c->cekLogin();
+        $this->output->unset_template();
     	$post = $this->input->method();
     	if ($post) {
             $this->load->library('form_validation');
@@ -106,6 +109,8 @@ class Confirmation extends MX_Controller {
     }
     public function proses_kontak()
     {
+        $this->M_c->cekLogin();
+        $this->output->unset_template();
         $this->load->library('form_validation');
         $this->form_validation->set_rules('kontak', 'kontak', 'trim|required');
         if ($this->form_validation->run() == FALSE) {
@@ -122,8 +127,11 @@ class Confirmation extends MX_Controller {
         }
         echo json_encode($response);
     }
-    public function edit_perwakilan($code, $id)
+    public function edit_perwakilan($id)
     {
+        $this->M_c->cekLogin();        
+        $this->output->unset_template();
+        $code = $this->session->userdata('code');
         $query = $this->M_c->getPerwakilanCodeId($code, $id);
         if ($query) {
             $response['status'] = "success";
@@ -145,17 +153,28 @@ class Confirmation extends MX_Controller {
     }
     public function perwakilan_delete($id) 
     {        
+        $this->M_c->cekLogin();
         $row = $this->M_c->get_by_id($id);
         if ($row) {
             $this->M_c->delete($id);
             $notif = notification_proses("success","Sukses","Data Berhasil di Hapus");
             $this->session->set_flashdata('message', $notif);
-            redirect('confirmation/invitation/'.$row->code);
+            redirect('confirmation/invitation');
         } else {
             $notif = notification_proses("danger","Gagal","Data Gagal di Hapus");
             $this->session->set_flashdata('message', $notif);
             redirect('invitation');
         }
+    }
+    public function finish()
+    {
+        $this->M_c->cekLogin();
+        $code = $this->session->userdata('code');
+        $update['date_confirm'] = date("Y-m-d H:i:s");
+        $this->db->where('code', $code);
+        $this->db->update('invitation', $update);
+        $data['subject'] = $this->session->userdata('subject');
+        $this->load->view('finish', $data);
     }
     private function _rules() 
     {
