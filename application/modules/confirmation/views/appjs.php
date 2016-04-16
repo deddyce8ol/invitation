@@ -40,9 +40,10 @@
 			var code = $(this).data('code');
 			var id = $(this).data('id');
 			$.ajax({
-				url: base_url + 'confirmation/edit_perwakilan/' + code + '/' + id,
+				url: base_url + 'confirmation/edit_perwakilan/' + id,
 				dataType: 'json',
 				success: function (response){
+					console.log(response);
 					if (response.status == "success") {
 						$('#modal-perwakilan').show();
 						$("#modal-perwakilan #mode").val("edit");	

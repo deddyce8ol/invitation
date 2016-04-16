@@ -42,6 +42,7 @@ class Confirmation extends MX_Controller {
     	$inv = $this->M_c->getEventByCode($code);
     	if ($inv) {
     		$data['subject'] = $inv->subject;
+            $data['date_confirm'] = $inv->date_confirm;
             $data['perwakilan'] = $this->M_c->getPerwakilanByEvent($inv->code)->result();
             $data['perwakilan_num'] = $this->M_c->countPerwakilan($inv->code);
             $data['form_action'] = "#";
@@ -156,8 +157,13 @@ class Confirmation extends MX_Controller {
         $this->M_c->cekLogin();
         $row = $this->M_c->get_by_id($id);
         if ($row) {
-            $this->M_c->delete($id);
-            $notif = notification_proses("success","Sukses","Data Berhasil di Hapus");
+            if ($row->code == $this->session->userdata('code')) {
+                $this->M_c->delete($id);
+                $notif = notification_proses("success","Sukses","Data Berhasil di Hapus");
+            }
+            else {
+                $notif = notification_proses("danger","Gagal","Anda tidak berhak menghapus perwakilan dari undangan lain");   
+            }
             $this->session->set_flashdata('message', $notif);
             redirect('confirmation/invitation');
         } else {
