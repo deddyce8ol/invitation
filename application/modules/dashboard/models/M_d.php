@@ -13,6 +13,12 @@ class M_d extends CI_Model {
 		$query = $this->db->get('perwakilan');
 		return $query->num_rows();
 	}
+	public function jumKonfirmasi()
+	{
+		$query = $this->db->where('date_confirm !=', "0000-00-00 00:00:00");
+		$query = $this->db->get('invitation');
+		return $query->num_rows();
+	}
 
 }
 

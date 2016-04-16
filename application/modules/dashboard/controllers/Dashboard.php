@@ -13,6 +13,8 @@ class Dashboard extends MX_Controller {
 	public function index()
 	{
 		$data['jumlah_undangan'] = $this->M_d->jumInv();
+		$data['jumlah_konfirmasi'] = $this->M_d->jumKonfirmasi();
+
 		$data['jumlah_perwakilan'] = $this->M_d->jumPerwakilan();
 		$this->output->append_title("PDS");
 		$this->load->view('beranda', $data);

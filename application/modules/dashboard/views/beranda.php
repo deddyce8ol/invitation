@@ -24,6 +24,19 @@
 	    </div>
 	    <div class="col-lg-3 col-xs-6">
 	      <!-- small box -->
+	      <div class="small-box bg-yellow">
+	        <div class="inner">
+	          <h3><?php echo $jumlah_konfirmasi;?></h3>
+	          <p>Jumlah Konfirmasi Undangan</p>
+	        </div>
+	        <div class="icon">
+	        	<i class="fa fa-check"></i>
+	        </div>
+	        <!-- <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a> -->
+	      </div>
+	    </div>
+	    <div class="col-lg-3 col-xs-6">
+	      <!-- small box -->
 	      <div class="small-box bg-green">
 	        <div class="inner">
 	          <h3><?php echo $jumlah_perwakilan;?></h3>
@@ -34,6 +47,6 @@
 	        </div>
 	        <!-- <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a> -->
 	      </div>
-	    </div>
+	    </div>	    
 	</div>
 </section>
