@@ -10,6 +10,9 @@
 	<link href="<?php echo base_url(); ?>assets/themes/adminLTE/css/ionicons.min.css" rel="stylesheet">
 	<link href="<?php echo base_url(); ?>assets/themes/adminLTE/css/AdminLTE.min.css" rel="stylesheet">
 	<link href="<?php echo base_url(); ?>assets/themes/adminLTE/css/skins/_all-skins.min.css" rel="stylesheet">
+	<!-- daterange picker -->
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/themes/adminLTE/plugins/daterangepicker/daterangepicker-bs3.css">
+    
 	<script src="<?php echo base_url();?>assets/themes/adminLTE/plugins/jQuery/jQuery-2.1.4.min.js"></script>
 	<script src="<?php echo base_url();?>assets/themes/adminLTE/js/bootstrap.min.js"></script>
 	<script src="<?php echo base_url();?>assets/themes/adminLTE/js/app.min.js"></script>
@@ -17,7 +20,10 @@
 	<script src="<?php echo base_url();?>assets/themes/adminLTE/plugins/fastclick/fastclick.min.js"></script>
 	<script src="<?php echo base_url();?>assets/themes/adminLTE/plugins/slimScroll/jquery.slimscroll.min.js"></script>
 	<script src="<?php echo base_url();?>assets/ckeditor/ckeditor.js"></script>
-	
+	<!-- date-range-picker -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
+    <script src="<?php echo base_url();?>assets/themes/adminLTE/plugins/daterangepicker/daterangepicker.js"></script>
+
 	<?php
 		if(!empty($meta))
 		foreach($meta as $name=>$content){

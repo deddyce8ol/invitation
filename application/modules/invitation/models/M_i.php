@@ -12,7 +12,9 @@ class M_i extends CI_Model {
     // get all
     function get_all($limit = array())
     {
-        $this->db->order_by('date_create', 'desc');
+        // $this->db->order_by('date_create', 'desc');
+        $this->filter();
+        $this->db->order_by('subject');
         if($limit == NULL){
             return $this->db->get($this->table);
         }
@@ -49,7 +51,21 @@ class M_i extends CI_Model {
         $this->db->delete($this->table);
     }	
 	
-
+    private function filter()
+    {
+        $tgl_mulai = $this->session->userdata('cari_tgl_mulai');
+        $tgl_selesai = $this->session->userdata('cari_tgl_selesai');
+        $subject = $this->session->userdata('cari_subject');
+        if ($tgl_mulai != "") {
+            $this->db->where('date_confirm >=', $tgl_mulai);
+        }
+        if ($tgl_selesai != "") {
+            $this->db->where('date_confirm <=', $tgl_selesai);
+        }
+        if ($subject != "") {
+            $this->db->like('subject', $subject, 'both');
+        }
+    }
 }
 
 /* End of file m_i.php */

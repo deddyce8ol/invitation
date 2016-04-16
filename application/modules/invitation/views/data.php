@@ -5,6 +5,42 @@
 <section class="content">
 	<div class="row">
 		<div class="col-md-12">
+			<div class="box box-default collapsed-box">
+			  <div class="box-header with-border">
+			    <h3 class="box-title">Pencarian Rinci</h3>
+			    <div class="box-tools pull-right">
+			      <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
+			    </div>
+			  </div>
+			  <div class="box-body">
+			    <?php echo form_open($action_cari, 'class="form-horizontal"');?>
+				    <div class="form-group">
+	                  <label for="subject" class="col-sm-2 control-label">Kepada</label>
+	                  <div class="col-sm-10">
+	                    <input type="text" class="form-control" id="subject" name="subject" placeholder="Kepada" value="<?php echo $cari_subject;?>">
+	                  </div>
+	                </div>
+	                <div class="form-group">
+	                    <label for="date_confirm" class="col-sm-2 control-label">Tanggal Konfirmasi:</label>
+	                    <div class="col-sm-10">
+		                    <div class="input-group">
+		                      <div class="input-group-addon">
+		                        <i class="fa fa-calendar"></i>
+		                      </div>
+		                      <input type="text" class="form-control pull-right active" id="date_confirm" name="date_confirm" value="<?php echo $date_confirm;?>">
+		                    </div>
+	                    </div>
+	                </div>
+	                <div class="form-group">
+	                	<div class="col-sm-2">
+	                	</div>
+	                	<div class="col-sm-10">
+	                		<button type="submit" class="btn btn-info">Cari</button>
+	                	</div>
+	                </div>
+			    <?php echo form_close();?>
+			  </div>
+			</div>
 			<div class="box">
 				<div class="box-header">
 					<?php echo anchor($add_action, 'Tambah', 'class="btn btn-success"');?>
@@ -56,3 +92,9 @@
 		</div>
 	</div>
 </section>
+<script type="text/javascript">
+	$(document).ready(function() {
+		//Date range picker
+        $('#date_confirm').daterangepicker({format: "YYYY-MM-DD"});
+	});
+</script>

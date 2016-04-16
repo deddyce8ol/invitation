@@ -30,14 +30,41 @@ class Invitation extends MX_Controller {
         $this->pagination->initialize($config_paging);
 
         $list = $this->M_i->get_all()->result();
+
+        // cari tanggal konfirmasi
+        $cari_tgl_mulai = $this->session->userdata('cari_tgl_mulai');
+        $cari_tgl_selesai = $this->session->userdata('cari_tgl_selesai');
+        $date_confirm = $cari_tgl_mulai;
+        if ($cari_tgl_selesai != "") {
+            $date_confirm .= " - ".$cari_tgl_selesai;
+        }
+        
         $data = array(
             'pagination' => $this->pagination->create_links(),
             'list' => $list,
             'title' => $this->title,
+            'action_cari' => site_url('invitation/cari_proses'),
             'add_action' => site_url('invitation/add'),
+            'cari_subject' => set_value('cari_subject', $this->session->userdata('cari_subject')),
+            'date_confirm' => set_value('date_confirm', $date_confirm),
             'subtitle' => 'Data'
         );
         $this->load->view('data', $data);
+    }
+    public function cari_proses()
+    {
+        $date=$this->input->post('date_confirm');
+        if ($date != "") {
+            $ex = explode(" - ", $date);
+            $array = array(
+                'cari_tgl_mulai' => $ex[0],
+                'cari_tgl_selesai' => $ex[1]
+            );        
+        }        
+        $array['cari_subject'] = $this->input->post('subject');
+        $this->session->set_userdata( $array );
+        redirect('invitation','refresh');
+
     }
     public function add() 
     {
