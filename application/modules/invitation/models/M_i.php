@@ -14,6 +14,8 @@ class M_i extends CI_Model {
     {
         // $this->db->order_by('date_create', 'desc');
         $this->filter();
+        $this->db->select($this->table.'.*');
+        $this->db->select('(SELECT COUNT(id) FROM perwakilan WHERE perwakilan.code = '.$this->table.'.code) AS slot_isi ');
         $this->db->order_by('subject');
         if($limit == NULL){
             return $this->db->get($this->table);

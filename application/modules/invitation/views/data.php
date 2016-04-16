@@ -53,6 +53,7 @@
 								<th>Kode Undangan</th>
 								<th>Sandi</th>
 								<th>Kuota</th>
+								<th>Sisa Kuota</th>
 								<th>Kepada</th>
 								<th>Kontak</th>								
 								<th>Tanggal Konfirmasi</th>
@@ -69,11 +70,13 @@
 									$edit = anchor('invitation/edit/'.$r->code, '<i class="fa fa-edit"></i>', 'class="btn btn-xs btn-default edit" title="Edit"');
 									$delete = anchor('invitation/delete/'.$r->code, '<i class="fa fa-times"></i>', 'class="btn btn-xs btn-danger delete" title="Delete" onclick="javasciprt: return confirm(\'Anda yakin ingin menghapus data ini ?\')"');
 									$aksi = $perwakilan." ".$edit." ".$delete;
+									$slot_sisa = $r->slot - $r->slot_isi;
 									echo "<tr>";
 									echo "<td>".$no."</td>";
 									echo "<td>".$r->code."</td>";
 									echo "<td>".$r->password."</td>";
 									echo "<td>".$r->slot."</td>";
+									echo "<td>".$slot_sisa."</td>";
 									echo "<td>".$r->subject."</td>";
 									echo "<td>".$r->kontak."</td>";									
 									echo "<td>".$this->indo_date->tgl_indo($r->date_confirm)."</td>";
