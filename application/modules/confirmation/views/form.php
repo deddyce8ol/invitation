@@ -11,7 +11,7 @@
                             </p>
                             <p>
                                 Hari
-                                <strong>Sabtu</strong>, Tanggal <strong>23 April 2016</strong>, Tempat : <strong>Best Western Kota Baru Hotel</strong>, Jl. Sultan Abdurrahman Pontianak
+                                <strong>Sabtu </strong>, Tanggal <strong>23 April 2016</strong>, Pulul : <strong>12:30 s/d selesai</strong>, Tempat : <strong>Best Western Kota Baru Hotel</strong>, Jl. Sultan Abdurrahman Pontianak
                             </p>
                         </div>
                     </div>
