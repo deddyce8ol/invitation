@@ -46,6 +46,7 @@ class Invitation extends MX_Controller {
             'action_cari' => site_url('invitation/cari_proses'),
             'add_action' => site_url('invitation/add'),
             'cari_subject' => set_value('cari_subject', $this->session->userdata('cari_subject')),
+            'cari_status' => $this->session->userdata('cari_status'),
             'date_confirm' => set_value('date_confirm', $date_confirm),
             'subtitle' => 'Data'
         );
@@ -62,6 +63,7 @@ class Invitation extends MX_Controller {
             );        
         }        
         $array['cari_subject'] = $this->input->post('subject');
+        $array['cari_status'] = $this->input->post('status');
         $this->session->set_userdata( $array );
         redirect('invitation','refresh');
 

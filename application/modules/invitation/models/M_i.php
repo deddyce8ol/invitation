@@ -58,6 +58,7 @@ class M_i extends CI_Model {
         $tgl_mulai = $this->session->userdata('cari_tgl_mulai');
         $tgl_selesai = $this->session->userdata('cari_tgl_selesai');
         $subject = $this->session->userdata('cari_subject');
+        $status = $this->session->userdata('cari_status');
         if ($tgl_mulai != "") {
             $this->db->where('date_confirm >=', $tgl_mulai);
         }
@@ -66,6 +67,12 @@ class M_i extends CI_Model {
         }
         if ($subject != "") {
             $this->db->like('subject', $subject, 'both');
+        }
+        if ($status == 1) {
+            $this->db->where('date_confirm !=', "0000-00-00 00:00:00");
+        }
+        if ($status == 2) {
+            $this->db->where('date_confirm', "0000-00-00 00:00:00");
         }
     }
 }

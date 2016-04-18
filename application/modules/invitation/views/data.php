@@ -32,6 +32,24 @@
 	                    </div>
 	                </div>
 	                <div class="form-group">
+	                  <label for="status" class="col-sm-2 control-label">Status</label>
+	                  <div class="col-sm-10">
+	                  	<select name="status" id="status" class="form-control">
+	                  		<option value="">::Pilih Status::</option>
+	                  		<?php
+	                  		$sOpt = array('1' => 'Sudah Konfirmasi', '2' => 'Belum Konfirmasi');
+	                  		foreach ($sOpt as $key => $value) {
+	                  			$selected = "";
+	                  			if ($cari_status == $key) {
+	                  				$selected = " selected='selected' ";
+	                  			}
+	                  			echo "<option value='".$key."' ".$selected.">".$value."</option>";
+	                  		}
+	                  		?>
+	                  	</select>
+	                  </div>
+	                </div>
+	                <div class="form-group">
 	                	<div class="col-sm-2">
 	                	</div>
 	                	<div class="col-sm-10">
