@@ -13,6 +13,7 @@ class Dashboard extends MX_Controller {
 	public function index()
 	{
 		$data['jumlah_undangan'] = $this->M_d->jumInv();
+		$data['jumlah_slot'] = $this->M_d->jumSlot();
 		$data['jumlah_konfirmasi'] = $this->M_d->jumKonfirmasi();
 
 		$data['jumlah_perwakilan'] = $this->M_d->jumPerwakilan();

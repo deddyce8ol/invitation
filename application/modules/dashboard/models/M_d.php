@@ -19,6 +19,19 @@ class M_d extends CI_Model {
 		$query = $this->db->get('invitation');
 		return $query->num_rows();
 	}
+	public function jumSlot()
+	{
+		$query = $this->db->select('SUM(slot) AS jumSlot');
+		$query = $this->db->get('invitation');
+		$num = $query->num_rows();
+		if ($num>0) {
+			$r = $query->row();
+			return $r->jumSlot;
+		}
+		else {
+			return 0;
+		}
+	}
 
 }
 

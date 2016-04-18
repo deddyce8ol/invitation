@@ -24,6 +24,18 @@
 	    </div>
 	    <div class="col-lg-3 col-xs-6">
 	      <!-- small box -->
+	      <div class="small-box bg-green">
+	        <div class="inner">
+	          <h3><?php echo $jumlah_slot;?></h3>
+	          <p>Slot Yang di Siapkan Panitia</p>
+	        </div>
+	        <div class="icon">
+	        	<i class="fa fa-users"></i>
+	        </div>
+	      </div>
+	    </div>
+	    <div class="col-lg-3 col-xs-6">
+	      <!-- small box -->
 	      <div class="small-box bg-yellow">
 	        <div class="inner">
 	          <h3><?php echo $jumlah_konfirmasi;?></h3>
